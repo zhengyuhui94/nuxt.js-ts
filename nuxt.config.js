@@ -34,12 +34,14 @@ module.exports = {
      ** Global CSS
      */
     css: [
-        '~/plugins/vue-plugins.ts'
+        
     ],
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: [],
+    plugins: [
+        '~/plugins/vue-plugins.ts'
+    ],
     /*
      ** Nuxt.js dev-modules
      */
