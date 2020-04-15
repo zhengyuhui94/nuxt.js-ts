@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+var cluster = require('cluster');
+if (cluster.isMaster && process.env.NODE_ENV != 'development') {
+    var cpus = require('os').cpus().length;
+    for (var i = 0; i<cpus; i++) {
+        cluster.fork();
+    }
+    cluster.on('online', function (worker) {
+        console.log('主进程' + worker.process.pid);
+    });
+} else {
+    console.log('子进程', process.pid);
+    console.log('启动端口', 3000);
+    require('../server');
+}

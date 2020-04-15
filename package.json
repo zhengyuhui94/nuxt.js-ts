@@ -1,0 +1,29 @@
+{
+  "name": "nuxt-ssr-03",
+  "version": "1.0.0",
+  "description": "My superior Nuxt.js project",
+  "author": "zhengyuhui94",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cross-env": "^5.2.0",
+    "element-ui": "^2.13.1",
+    "express": "^4.16.4",
+    "nuxt": "^2.0.0",
+    "nuxt-property-decorator": "^2.5.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "@nuxt/typescript-build": "^0.6.5",
+    "nodemon": "^1.18.9",
+    "tslint": "^6.1.1",
+    "tslint-loader": "^3.5.4",
+    "typescript": "^3.8.3"
+  }
+}

@@ -1,0 +1,20 @@
+{
+    "api": {
+        "comment": "画像系统接口",
+        "domain": "http://rkqy-api.jd.com",
+        "test": "http://10.222.34.62:8080",
+        "development": "http://rkqy-api.jd.com"
+    },
+    "url": {
+        "comment": "外域接口地址",
+        "domain": "http://flowyed-gateway.jr.jd.com/common-authority",
+        "test": "http://172.25.60.152:8170/common-authority",
+        "development": "http://flowyed-gateway.jr.jd.com/common-authority"
+    },
+    "erp": {
+        "comment": "erp登录地址",
+        "domain": "http://ssa.jd.com",
+        "test": "http://test.ssa.jd.com",
+        "development": "http://ssa.jd.com"
+    }
+}
