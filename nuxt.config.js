@@ -40,7 +40,7 @@ module.exports = {
      ** Plugins to load before mounting the App
      */
     plugins: [
-        '~/plugins/vue-plugins.ts'
+        '~/plugins/vue.ts'
     ],
     /*
      ** Nuxt.js dev-modules

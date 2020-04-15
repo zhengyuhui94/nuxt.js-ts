@@ -1,4 +1,4 @@
-# nuxt-ssr-03
+# nuxt-ssr
 
 > My superior Nuxt.js project
 

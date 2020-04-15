@@ -19,7 +19,6 @@
     } from 'nuxt-property-decorator';
     import axios from 'axios';
     import dateTool from '~/utils/dateTool';
-    import test from '~/utils/test';
 
     @Component
     export default class Good extends Vue {
@@ -27,16 +26,19 @@
 
         // 服务端异步获取数据并填充到 data 依赖中
         private async asyncData(): Promise < any > {
-            const {
-                data
-            } = await axios.get('http://localhost:3000/mock/goodname');
+            // asyncData 和 fetch 方法在 vue 组件实例化之前执行的生命周期方法，因此无法获取到实例 this
+            // 在这里通过 Vue.prototype.$requestTool 使用请求方法
+            const data = await Vue.prototype.$request.get('/mock/goodname');
             return {
                 name: data.name
             };
         }
 
         private created(): void {
-            test();
+            // 在生命周期 created 中能获取到实例 this，因此通过 this.$requestTool 使用请求方法
+            this.$request.get('/mock/goodname').then((res: any) => {
+                console.log(res);
+            });
         }
     }
 

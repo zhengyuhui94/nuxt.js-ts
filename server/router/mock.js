@@ -3,6 +3,7 @@ const router = express.Router();
 
 router.get('/goodname', (req, res) => {
     res.json({
+        code: 0,
         name: '鸡腿'
     });
 });
