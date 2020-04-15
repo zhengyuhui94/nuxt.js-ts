@@ -2,6 +2,7 @@
     <div class="layput-wapper">
         <div>2222</div>
         <div>{{name}}</div>
+        <br>
         <el-row>
             <el-button disabled>默认按钮</el-button>
             <el-button type="primary">主要按钮</el-button>
@@ -17,7 +18,6 @@
         Component,
         Vue
     } from 'nuxt-property-decorator';
-    import axios from 'axios';
     import dateTool from '~/utils/dateTool';
 
     @Component
