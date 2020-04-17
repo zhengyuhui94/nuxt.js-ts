@@ -35,10 +35,15 @@
         }
 
         private created(): void {
+            console.log(111);
             // 在生命周期 created 中能获取到实例 this，因此通过 this.$requestTool 使用请求方法
             this.$request.get('/mock/goodname').then((res: any) => {
                 console.log(res);
             });
+        }
+
+        private beforeCreate(): void{
+            console.log(222);
         }
     }
 
