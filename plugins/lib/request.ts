@@ -40,6 +40,20 @@ axiosInstance.interceptors.response.use((response: AxiosResponse): any => {
 
 // 请求类
 class Request {
+    private static instance: Request | null = null;
+
+    private constructor(){
+
+    }
+
+    // 实现单例模式获取 axios 实例方法
+    public static getInstance(): Request{
+        if(!Request.instance){
+            Request.instance = new Request();
+        }
+        return Request.instance;
+    }
+
     // Request 中间件的安装调用方法
     public install(): void {
         Vue.prototype.$request = {
@@ -83,6 +97,4 @@ class Request {
     }
 }
 
-const request = new Request();
-
-export default request;
+export default Request;
