@@ -1,7 +1,7 @@
 <template>
-    <div class="layput-wapper">
+    <div class="layput-wapper flex">
         <div>2222</div>
-        <div>{{name}}</div>
+        <div class="name-wrap">{{name}}</div>
         <br>
         <el-row>
             <el-button disabled>默认按钮</el-button>
@@ -49,5 +49,7 @@
 
 </script>
 <style lang="scss" scoped>
-
+    .name-wrap {
+        color: $color;
+    }
 </style>

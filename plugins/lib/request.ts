@@ -3,7 +3,6 @@ import ElementUI from 'element-ui';
 import axios, {
     AxiosPromise,
     AxiosRequestConfig,
-    Canceler,
     AxiosResponse,
     AxiosInstance
 } from 'axios';
@@ -11,21 +10,15 @@ Vue.use(ElementUI);
 
 // 创建一个新的 axios 实例
 const axiosInstance: AxiosInstance = axios.create({
-    // 设置请求的基础路径
-    baseURL: 'http://localhost:3000',
+    // 设置请求的基础路径：
+    // 1.当在浏览器通过 axios 请求且 baseURL 为 '' 的时候，
+    // 会默认取当前的域名端口为基础路径【该项目是 3000 端口】
+    // 2.当在服务端通过 axios 请求的时候，请求的默认端口是 80，
+    // 但服务端启动的服务是 3000 端口，即没有启动 80 端口【会报错】，所以需要根据不同环境设置 baseURL
+    baseURL: process.server ? 'http://127.0.0.1:3000' : '',
     // 设置请求超时的最大时长
     timeout: 10000
 });
-
-// 发送请求之前添加取消请求配置
-// 并将每个请求的取消方法添加到 vuex 中的 requestCancels 用于存放取消请求函数的数组里
-// // 用于之后，路由跳转时，取消请求
-// axios.interceptors.request.use((config: AxiosRequestConfig): AxiosRequestConfig => {
-//     config.cancelToken = new axios.CancelToken((cancel: Canceler) => {
-//         store.commit('addRequestCancels', cancel);
-//     });
-//     return config;
-// });
 
 // 在接口接收到响应数据之后，返回给客户端之前进行的响应拦截处理
 axiosInstance.interceptors.response.use((response: AxiosResponse): any => {
@@ -40,6 +33,20 @@ axiosInstance.interceptors.response.use((response: AxiosResponse): any => {
 
 // 请求类
 class Request {
+    private static instance: Request | null = null;
+
+    private constructor(){
+
+    }
+
+    // 实现单例模式获取 axios 实例方法
+    public static getInstance(): Request{
+        if(!Request.instance){
+            Request.instance = new Request();
+        }
+        return Request.instance;
+    }
+
     // Request 中间件的安装调用方法
     public install(): void {
         Vue.prototype.$request = {
@@ -83,6 +90,4 @@ class Request {
     }
 }
 
-const request = new Request();
-
-export default request;
+export default Request;

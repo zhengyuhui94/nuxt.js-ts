@@ -16,18 +16,21 @@ config.dev = process.env.NODE_ENV === 'development'
 
 async function start () {
   // Init Nuxt.js
+  // 用指定的配置对象实例化 Nuxt.js
   const nuxt = new Nuxt(config)
 
   const { host, port } = nuxt.options.server
 
   await nuxt.ready()
   // Build only in dev mode
+  // 在开发模式下启用编译构建和热加载
   if (config.dev) {
     const builder = new Builder(nuxt)
     await builder.build()
   }
 
   // Give nuxt middleware to express
+  // 用 Nuxt.js 渲染每个路由
   app.use(nuxt.render)
 
   // Listen the server
