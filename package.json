@@ -17,7 +17,7 @@
     "element-ui": "^2.13.1",
     "express": "^4.16.4",
     "node-sass": "^4.14.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "nuxt-property-decorator": "^2.5.1",
     "request": "^2.88.2",
     "sass-loader": "^8.0.2"
