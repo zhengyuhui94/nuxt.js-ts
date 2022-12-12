@@ -15,7 +15,7 @@
     "axios": "^0.19.2",
     "cross-env": "^5.2.0",
     "element-ui": "^2.13.1",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "node-sass": "^4.14.0",
     "nuxt": "^2.0.0",
     "nuxt-property-decorator": "^2.5.1",
